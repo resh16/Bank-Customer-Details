@@ -1,0 +1,58 @@
+﻿@model IEnumerable<FirstWebApplication.Models.BankCustomer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OpeningBalance)
+            </th>
+            <th>
+                <a asp-action="AddOrEdit" class="btn btn-outline-success">Add Customer</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpeningBalance)
+            </td>
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@item.CustomerId">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.CustomerId" class="text-danger ml-1">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
